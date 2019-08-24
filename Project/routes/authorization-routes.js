@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
 router.get("/signup", (req, res, next) => {
-  res.render("authorization/signup");
+  res.render("authorization-views/sign-up");
 });
 
 // Make sure sign up form action posts to this url
@@ -23,6 +23,14 @@ router.post("/signup", (req, res, next) => {
   const salt = bcrypt.genSaltSync(10);
   const hashPass = bcrypt.hashSync(password, salt);
 
+  if (username === "" || password === "") {
+    res.render("authorization-views/signup", {
+      errorMessage: "Indicate a username and a password to sign up"
+    });
+    return;
+  }
+
+  // Creates and inserts new user into DB
   User.create({
     username,
     password: hashPass
