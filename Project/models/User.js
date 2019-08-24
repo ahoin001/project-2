@@ -5,6 +5,8 @@ const userSchema = Schema({
 
     username: String,
     password: String,
+    email: String,
+    imageUrl: String
 
 })
 
