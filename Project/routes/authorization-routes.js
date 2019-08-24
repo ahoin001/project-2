@@ -2,11 +2,16 @@
 const express = require("express");
 const router = express.Router();
 
+// Passport
+const passport = require("passport");
+
 // BCrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 
 // User model
-const User = require("../models/user");
+const User = require("../models/User");
+
+// ********************************************************************************
 
 router.get("/signup", (req, res, next) => {
   res.render("authorization-views/sign-up");
@@ -42,6 +47,7 @@ router.post("/signup", (req, res, next) => {
   })
     .then(() => {
       // redirect user to login page after successful account creation
+      console.log(User);
       res.redirect("/login");
     })
     .catch(error => {
@@ -56,31 +62,16 @@ router.get("/login", (req, res, next) => {
   res.render("authorization-views/login");
 });
 
-router.post("/signup", (req, res, next) => {
-
-  // Information from form
-  const username = req.body.username;
-  const password = req.body.password;
-
-  // TODO : We can add login validation  
-
-  // Creates and inserts new User into DB
-  //TODO : Do we want email / image?
-  User.create({
-    username,
-    password: hashPass
-    // email: '',
-    // image: ''
-  })
-    .then(() => {
-      // redirect user to login page after successful account creation
-      res.redirect("/login");
-    })
-    .catch(error => {
-      // error on failed sign up
-      console.log(error);
-      console.log(`Error creating/inserting user`)
-    })
-
+router.get("/success", (req, res, next) => {
+  res.render("success");
 });
+
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/success",
+  failureRedirect: "/login",
+  failureFlash: true,
+  passReqToCallback: true
+}));
+
+
 module.exports = router;
