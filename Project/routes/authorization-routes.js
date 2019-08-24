@@ -31,9 +31,12 @@ router.post("/signup", (req, res, next) => {
   }
 
   // Creates and inserts new user into DB
+  //TODO : Do we want email / image?
   User.create({
     username,
     password: hashPass
+    // email: '',
+    // image: ''
   })
     .then(() => {
       // redirect user to home page

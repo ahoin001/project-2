@@ -52,7 +52,7 @@ app.use('/', index);
 // ROUTES 
 // ****************************************
 
-// Routes for authorization 
+// Routes for User 
 app.use('/', require('./routes/authorization-routes'));
 
 module.exports = app;
