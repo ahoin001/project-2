@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 // TODO Make Username and Password required
 const userSchema = Schema({
 
-    username: String,
-    password: String,
+    username: { type: String, required: true },
+    password: { type: String, required: true },
     email: String,
     imageUrl: String
 

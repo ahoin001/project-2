@@ -58,8 +58,10 @@ const index = require('./routes/index');
 app.use('/', index);
 
 // ****************************************
-// ROUTES 
+// Passport
 // ****************************************
+
+// TODO: Add Social Media verification?
 
 app.use(session({
   secret: "our-passport-local-strategy-app",
@@ -96,6 +98,11 @@ passport.use(new LocalStrategy((username, password, next) => {
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+// ****************************************
+// ROUTES 
+// ****************************************
+
 
 // Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
