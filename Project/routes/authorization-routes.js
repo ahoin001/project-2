@@ -2,6 +2,9 @@
 const express = require("express");
 const router = express.Router();
 
+// For routes that require login to be accessed we need this package
+const ensureLogin = require("connect-ensure-login");
+
 // Passport
 const passport = require("passport");
 
@@ -62,7 +65,7 @@ router.get("/login", (req, res, next) => {
   res.render("authorization-views/login");
 });
 
-router.get("/success", (req, res, next) => {
+router.get("/success", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render("success");
 });
 
@@ -77,6 +80,11 @@ router.post("/login", passport.authenticate("local", {
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
+});
+
+// TODO : Add the ensureLogin method part to routes that only a user should have access too
+router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("private", { user: req.user });
 });
 
 module.exports = router;

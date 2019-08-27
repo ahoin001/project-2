@@ -81,6 +81,7 @@ passport.deserializeUser((id, cb) => {
 });
 
 passport.use(new LocalStrategy((username, password, next) => {
+  // Finds if username exsists
   User.findOne({ username }, (err, user) => {
     if (err) {
       return next(err);
@@ -88,6 +89,7 @@ passport.use(new LocalStrategy((username, password, next) => {
     if (!user) {
       return next(null, false, { message: "Incorrect username" });
     }
+    // if passwprd matches
     if (!bcrypt.compareSync(password, user.password)) {
       return next(null, false, { message: "Incorrect password" });
     }
@@ -106,11 +108,5 @@ app.use(passport.session());
 
 // Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
-
-
-
-
-
-
-
+app.use('/', require('./routes/user-routes'));
 module.exports = app;
