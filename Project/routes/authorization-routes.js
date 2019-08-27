@@ -65,16 +65,15 @@ router.get("/login", (req, res, next) => {
   res.render("authorization-views/login");
 });
 
-router.get("/success", ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  res.render("success");
-});
-
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/success",
+  
+  successRedirect: "/user-page",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
+
 }));
+
 
 // Passport provides a logout function to req
 router.get("/logout", (req, res) => {
@@ -83,8 +82,10 @@ router.get("/logout", (req, res) => {
 });
 
 // TODO : Add the ensureLogin method part to routes that only a user should have access too
-router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("private", { user: req.user });
+router.get("/success", ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  res.render("success");
+  // console.log(`Logged In!!`);
 });
+
 
 module.exports = router;
