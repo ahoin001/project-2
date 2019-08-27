@@ -66,7 +66,7 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-  
+
   successRedirect: "/user-page",
   failureRedirect: "/login",
   failureFlash: true,
@@ -81,7 +81,7 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// TODO : Add the ensureLogin method part to routes that only a user should have access too
+// TODO : Add the ensureLogin method (need to install ensure login pkg) to routes that only a user should have access too
 router.get("/success", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render("success");
   // console.log(`Logged In!!`);
