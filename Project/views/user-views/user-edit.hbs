@@ -1,6 +1,6 @@
 <h2> Edit: {{ theUser.username }} </h2>
 
-<form action="/user/{{theUser._id}}/update" method="post">
+<form  action="/user/{{theUser.id}}/update" method="post">
 
   <label for="">User Name :</label>
   <input type="text" name="username" id="" value="{{ theUser.username }}">
@@ -12,6 +12,6 @@
   <label for="">Image URL:</label>
   <input type="text" name="imageUrl" id="">
 
-  <button type="submit">Update</button>
+  <button id="myform" type="submit">Update</button>
 
 </form>

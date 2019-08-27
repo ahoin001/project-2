@@ -14,6 +14,7 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
+const flash = require("connect-flash");
 
 // User Model
 const User = require("./models/User");
@@ -80,7 +81,11 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
-passport.use(new LocalStrategy((username, password, next) => {
+app.use(flash());
+
+passport.use(new LocalStrategy({
+  passReqToCallback: true
+}, (req, username, password, next) => {
   // Finds if username exsists
   User.findOne({ username }, (err, user) => {
     if (err) {

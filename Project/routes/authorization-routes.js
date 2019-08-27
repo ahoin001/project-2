@@ -62,7 +62,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
-  res.render("authorization-views/login");
+  res.render("authorization-views/login",{ "message": req.flash("error") });
 });
 
 router.post("/login", passport.authenticate("local", {
