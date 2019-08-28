@@ -16,6 +16,9 @@ const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const flash = require("connect-flash");
 
+// Cloudinary 
+let cloudinary = require('cloudinary').v2;
+
 // User Model
 const User = require("./models/User");
 
@@ -114,4 +117,6 @@ app.use(passport.session());
 // Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
 app.use('/', require('./routes/user-routes'));
+
+
 module.exports = app;

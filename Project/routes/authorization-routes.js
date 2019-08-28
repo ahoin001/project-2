@@ -11,6 +11,9 @@ const passport = require("passport");
 // BCrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 
+// cloudinary
+const cloudinary = require('../config/cloudinary-thing');
+
 // User model
 const User = require("../models/User");
 
@@ -20,12 +23,12 @@ router.get("/signup", (req, res, next) => {
   res.render("authorization-views/sign-up");
 });
 
-// Sign-Up form action posts to this url
 router.post("/signup", (req, res, next) => {
 
   // Information from form
   const username = req.body.username;
   const password = req.body.password;
+  const profileImg = req.body.image;
   const email = req.body.email;
 
   // bcrypting the password
@@ -44,9 +47,9 @@ router.post("/signup", (req, res, next) => {
   //TODO : Do we want email / image?
   User.create({
     username,
-    password: hashPass
+    password: hashPass,
     // email: '',
-    // image: ''
+    image: profileImg
   })
     .then(() => {
       // redirect user to login page after successful account creation
@@ -73,7 +76,6 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 
 }));
-
 
 // Passport provides a logout function to req
 router.get("/logout", (req, res) => {
