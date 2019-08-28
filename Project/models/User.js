@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// TODO Make Username and Password required
 const userSchema = Schema({
 
     username: { type: String, required: true },
