@@ -12,7 +12,7 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 
 // cloudinary
-const cloudinary = require('../config/cloudinary-thing');
+const cloudinary = require('../config/cloudinaryconfig');
 
 // User model
 const User = require("../models/User");
