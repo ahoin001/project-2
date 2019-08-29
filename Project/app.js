@@ -9,6 +9,19 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
 
+// REQUIRED PACKAGES FOR PASSPORT
+const passport = require("passport");
+const bcrypt = require("bcrypt");
+const session = require("express-session");
+const LocalStrategy = require("passport-local").Strategy;
+const flash = require("connect-flash");
+
+// Cloudinary 
+let cloudinary = require('cloudinary').v2;
+
+// User Model
+const User = require("./models/User");
+
 mongoose
   .connect('mongodb://localhost/project', { useNewUrlParser: true })
   .then(x => {
@@ -49,11 +62,62 @@ const index = require('./routes/index');
 app.use('/', index);
 
 // ****************************************
+// Passport
+// ****************************************
+
+// TODO: Add Social Media verification?
+
+app.use(session({
+  secret: "our-passport-local-strategy-app",
+  resave: true,
+  saveUninitialized: true
+}));
+
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
+});
+
+passport.deserializeUser((id, cb) => {
+  User.findById(id, (err, user) => {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
+
+app.use(flash());
+
+passport.use(new LocalStrategy({
+  passReqToCallback: true
+}, (req, username, password, next) => {
+  // Finds if username exsists
+  User.findOne({ username }, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return next(null, false, { message: "Incorrect username" });
+    }
+    // if passwprd matches
+    if (!bcrypt.compareSync(password, user.password)) {
+      return next(null, false, { message: "Incorrect password" });
+    }
+
+    return next(null, user);
+  });
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ****************************************
 // ROUTES 
 // ****************************************
 
-// Routes for User 
+
+// Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
+app.use('/', require('./routes/user-routes'));
+
 
 // Routes for Recipes
 
