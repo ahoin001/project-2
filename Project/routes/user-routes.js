@@ -3,6 +3,9 @@ const express = require("express");
 const router = express.Router();
 const ensureLogin = require("connect-ensure-login");
 
+// cloudinary
+const cloudinary = require('../config/cloudinaryconfig');
+
 // User model
 const User = require("../models/User");
 
@@ -19,7 +22,7 @@ router.get("/user-page/:id/edit", ensureLogin.ensureLoggedIn(), (req, res) => {
 
 });
 
-router.post("/user/:id/update", ensureLogin.ensureLoggedIn('/'), (req, res) => {
+router.post("/user/:id/update",cloudinary.single('image'), ensureLogin.ensureLoggedIn('/'), (req, res) => {
 
   // Find user in DB using current user ID , and update the username to what is in the form
   

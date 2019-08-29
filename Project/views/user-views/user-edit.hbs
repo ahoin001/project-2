@@ -1,6 +1,6 @@
 <h2> Edit: {{ theUser.username }} </h2>
 
-<form action="/user/{{theUser.id}}/update" method="post">
+<form action="/user/{{theUser.id}}/update" method="post" enctype="multipart/form-data">
 
   <label for="">User Name :</label>
   <input type="text" name="username" id="" value="{{ theUser.username }}">
@@ -11,6 +11,6 @@
   <label for="image">Image</label>
   <input type="file" id="image" name="image" accept="image/*">
 
-  <button id="myform" type="submit">Update</button>
+  <button type="submit">Update account</button>
 
 </form>

@@ -39,6 +39,7 @@ router.post("/signup", cloudinary.single('image'), (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
+  
   // Give profile image a default image
   let profileImage = '/Project/public/images/ppic.png';
 
