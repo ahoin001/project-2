@@ -1,16 +1,15 @@
 <h2> Edit: {{ theUser.username }} </h2>
 
-<form  action="/user/{{theUser.id}}/update" method="post">
+<form action="/user/{{theUser.id}}/update" method="post">
 
   <label for="">User Name :</label>
   <input type="text" name="username" id="" value="{{ theUser.username }}">
-  
+
   <label for="">Password maybe? </label>
   <input type="number" name="passwprd" id="" placeholder="1" value="">
 
-  {{!-- TODO Image Update, cloudinary? --}}
-  <label for="">Image URL:</label>
-  <input type="text" name="imageUrl" id="">
+  <label for="image">Image</label>
+  <input type="file" id="image" name="image" accept="image/*">
 
   <button id="myform" type="submit">Update</button>
 
