@@ -6,8 +6,7 @@ const userSchema = Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
     email: String,
-    profilepic:  //Buffer allows us to stroe images in the form of an array
-      { data: Buffer, contentType: String } 
+    profilepic: String
 
 })
 

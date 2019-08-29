@@ -19,17 +19,33 @@ const User = require("../models/User");
 
 // ********************************************************************************
 
+// document.getElementById("form").addEventListener("submit", function(event){
+//   event.preventDefault()
+// });
+
 router.get("/signup", (req, res, next) => {
   res.render("authorization-views/sign-up");
 });
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup", cloudinary.single('image'), (req, res, next) => {
+ 
+  console.log(`========================================`);
+  console.log(req.body);
 
+  console.log(`////////////////////////////////////////`);
+  console.log(`The req file`);
+  console.log(req.file);
   // Information from form
   const username = req.body.username;
   const password = req.body.password;
-  const profileImg = req.body.image;
   const email = req.body.email;
+  // Give profile image a default image
+  let profileImage = '/Project/public/images/ppic.png';
+
+  // if user provided a image to use, use thiers
+  if(req.file){
+    profileImage =  req.file.url;
+  }
 
   // bcrypting the password
   const salt = bcrypt.genSaltSync(10);
@@ -49,7 +65,7 @@ router.post("/signup", (req, res, next) => {
     username,
     password: hashPass,
     // email: '',
-    image: profileImg
+    profilepic: profileImage
   })
     .then(() => {
       // redirect user to login page after successful account creation
@@ -65,7 +81,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
-  res.render("authorization-views/login",{ "message": req.flash("error") });
+  res.render("authorization-views/login", { "message": req.flash("error") });
 });
 
 router.post("/login", passport.authenticate("local", {
