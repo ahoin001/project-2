@@ -61,7 +61,7 @@ router.post("/signup", cloudinary.single('image'), (req, res, next) => {
     return;
   }
 
-  // Creates and inserts new User into DB
+  // Creates and inserts new User into DB in User collection (named users in DB by mongoose)
   //TODO : Do we want email / image?
   User.create({
     username,
@@ -71,8 +71,10 @@ router.post("/signup", cloudinary.single('image'), (req, res, next) => {
   })
     .then(() => {
       // redirect user to login page after successful account creation
+      console.log(`========================================`);
       console.log(User);
-      res.redirect("/login");
+      console.log(`========================================`);
+      res.redirect("/login"); 
     })
     .catch(error => {
       // error on failed sign up
@@ -101,11 +103,10 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// TODO : Add the ensureLogin method (need to install ensure login pkg) to routes that only a user should have access too
+// TODO : Add the ensureLogin method to routes that only a logged in user should have access too
 router.get("/success", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render("success");
   // console.log(`Logged In!!`);
 });
-
 
 module.exports = router;
