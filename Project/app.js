@@ -16,6 +16,9 @@ const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 const flash = require("connect-flash");
 
+// Cloudinary 
+let cloudinary = require('cloudinary').v2;
+
 // User Model
 const User = require("./models/User");
 const Review = require("./models/Review");

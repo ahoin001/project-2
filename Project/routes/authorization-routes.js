@@ -11,22 +11,42 @@ const passport = require("passport");
 // BCrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 
+// cloudinary
+const cloudinary = require('../config/cloudinaryconfig');
+
 // User model
 const User = require("../models/User");
 
 // ********************************************************************************
 
+// document.getElementById("form").addEventListener("submit", function(event){
+//   event.preventDefault()
+// });
+
 router.get("/signup", (req, res, next) => {
   res.render("authorization-views/sign-up");
 });
 
-// Sign-Up form action posts to this url
-router.post("/signup", (req, res, next) => {
+router.post("/signup", cloudinary.single('image'), (req, res, next) => {
+ 
+  console.log(`========================================`);
+  console.log(req.body);
 
+  console.log(`////////////////////////////////////////`);
+  console.log(`The req file`);
+  console.log(req.file);
   // Information from form
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
+  
+  // Give profile image a default image
+  let profileImage = '/Project/public/images/ppic.png';
+
+  // if user provided a image to use, use thiers
+  if(req.file){
+    profileImage =  req.file.url;
+  }
 
   // bcrypting the password
   const salt = bcrypt.genSaltSync(10);
@@ -44,9 +64,9 @@ router.post("/signup", (req, res, next) => {
   //TODO : Do we want email / image?
   User.create({
     username,
-    password: hashPass
+    password: hashPass,
     // email: '',
-    // image: ''
+    profilepic: profileImage
   })
     .then(() => {
       // redirect user to login page after successful account creation
@@ -62,7 +82,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
-  res.render("authorization-views/login",{ "message": req.flash("error") });
+  res.render("authorization-views/login", { "message": req.flash("error") });
 });
 
 router.post("/login", passport.authenticate("local", {
@@ -73,7 +93,6 @@ router.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 
 }));
-
 
 // Passport provides a logout function to req
 router.get("/logout", (req, res) => {
