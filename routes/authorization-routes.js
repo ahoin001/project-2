@@ -100,6 +100,7 @@ router.post("/login", passport.authenticate("local", {
 // Passport provides a logout function to req
 router.get("/logout", (req, res) => {
   req.logout();
+  console.log('Successfully logged out!')
   res.redirect("/");
 });
 

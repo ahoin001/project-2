@@ -24,9 +24,9 @@ router.get("/user-page/:id/edit", ensureLogin.ensureLoggedIn(), (req, res) => {
 
 router.post("/user/:id/update",cloudinary.single('image'), ensureLogin.ensureLoggedIn('/'), (req, res) => {
 
-  // Find user in DB using current user ID , and update the username to what is in the form
-  
+  console.log('Was redirected too update page')
 
+  // Find user in DB using current user ID , and update the username to what is in the form
   User
   // TODO :Can add whatever else user should be able to update here
     .findByIdAndUpdate(req.params.id, { username: req.body.username, profilepic: req.file.url })
