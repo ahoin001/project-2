@@ -8,12 +8,9 @@
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "body-parser": "^1.19.0",
-=======
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "cloudinary": "^1.14.0",
->>>>>>> 5d8cb5f7182b98c43e9a0f0da59e46f534a3d4b4
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
