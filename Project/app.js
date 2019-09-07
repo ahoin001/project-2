@@ -18,6 +18,7 @@ const flash = require("connect-flash");
 
 // User Model
 const User = require("./models/User");
+const Review = require("./models/Review");
 
 mongoose
   .connect('mongodb://localhost/project', { useNewUrlParser: true })
@@ -110,8 +111,11 @@ app.use(passport.session());
 // ROUTES 
 // ****************************************
 
-
 // Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
 app.use('/', require('./routes/user-routes'));
+
+// Routes for Reviews
+app.use('/', require('./routes/review-routes'));
+
 module.exports = app;
