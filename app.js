@@ -23,8 +23,9 @@ let cloudinary = require('cloudinary').v2;
 const User = require("./models/User");
 const Review = require("./models/Review");
 
+// TODO: Can name 'Project-2' anything we want the database name to be
 mongoose
-  .connect('mongodb://localhost/project', { useNewUrlParser: true })
+  .connect('mongodb://localhost/Project-2', { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

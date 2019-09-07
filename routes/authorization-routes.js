@@ -19,10 +19,6 @@ const User = require("../models/User");
 
 // ********************************************************************************
 
-// document.getElementById("form").addEventListener("submit", function(event){
-//   event.preventDefault()
-// });
-
 router.get("/signup", (req, res, next) => {
   res.render("authorization-views/sign-up");
 });
@@ -30,20 +26,25 @@ router.get("/signup", (req, res, next) => {
 router.post("/signup", cloudinary.single('image'), (req, res, next) => {
  
   console.log(`========================================`);
+  console.log('New User Form Submitted!')
+  console.log(`========================================`);
   console.log(req.body);
 
-  console.log(`////////////////////////////////////////`);
+  console.log(`========================================`);
   console.log(`The req file`);
+  console.log(`========================================`);
   console.log(req.file);
+  console.log(`========================================`);
+
   // Information from form
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
   
-  // Give profile image a default image
+  // By default we provide a profile image
   let profileImage = '/Project/public/images/ppic.png';
 
-  // if user provided a image to use, use thiers
+  // If user provided a image to use, use thiers
   if(req.file){
     profileImage =  req.file.url;
   }
