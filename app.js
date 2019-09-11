@@ -119,8 +119,6 @@ app.use(passport.session());
 const celebRoutes = require('./routes/');
 app.use('/celebrities',celebRoutes);
 
-
->>>>>>> 5154f54b1dde2f15aab9d67b9daf312b57de5c78:app.js
 // Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
 app.use('/', require('./routes/user-routes'));
