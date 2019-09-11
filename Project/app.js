@@ -113,6 +113,10 @@ app.use(passport.session());
 // ROUTES 
 // ****************************************
 
+const celebRoutes = require('./routes/');
+app.use('/celebrities',celebRoutes);
+
+
 
 // Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
