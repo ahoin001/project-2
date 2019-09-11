@@ -1,0 +1,15 @@
+<h1>Hello Chef!</h1>
+
+<form action="/reviews/create" method="POST">
+  <label>Name</label>
+  <input type="text" name="name" {{this.name}}>
+  <label>Recipe</label>
+  <input type="text" name="recipe" {{this.recipe}}>
+  <label>Cuisine</label>
+  <input type="text" name="cuisine" {{this.cuisine}}>
+  <label>Review</label>
+  <input type="text" name="reviews" {{this.reviews}}>
+  <label>Rating</label>
+  <input type="number" name="rating" {{this.rating}}>
+  <button type="submit">Send</button>
+</form>
