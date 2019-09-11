@@ -23,7 +23,8 @@ router.get("/user-page/:id/edit", ensureLogin.ensureLoggedIn(), (req, res) => {
 });
 
 router.post("/user/:id/update",cloudinary.single('image'), ensureLogin.ensureLoggedIn('/'), (req, res) => {
-
+  
+  console.log('========================================================================================================================================')
   console.log('Was redirected too update page')
   let newProfilePic;
   
@@ -32,8 +33,10 @@ router.post("/user/:id/update",cloudinary.single('image'), ensureLogin.ensureLog
     // If no image was provided, give it our default image
     newProfilePic = 'images/ppic.png';
   }
+  else{
+    newProfilePic = req.file.url;
+  }
   
-
   // Find user in DB using current user ID , and update the username to what is in the form
   User
   // TODO :Can add whatever else user should be able to update here, 
@@ -42,8 +45,6 @@ router.post("/user/:id/update",cloudinary.single('image'), ensureLogin.ensureLog
       res.redirect('/user-page');
     })
     .catch((err) => {
-
-
 
       console.log(`Error updating document`, err);
     })
