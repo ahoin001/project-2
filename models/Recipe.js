@@ -6,11 +6,12 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = Schema({
     name: String,
-    date: Date,
+    date: { type: Date, default: Date.now },
     servings: Number,
-    typeOfFood: {type: String, enum: ["Italian", "Chinese", "American"]},
+    typeOfFood: {type: String, enum: ["Italian", "Chinese", "American"]}, //just an example of the options, we can decide later
     ingredientsList: {},
     stepsToCook: String,
+    recipeImage: String, //REQUIRED FIELD
     creatorId: [{type: Schema.Types.ObjectId, ref: 'User'}]
 })
 
