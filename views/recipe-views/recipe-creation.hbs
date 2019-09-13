@@ -1,12 +1,12 @@
 <h2>Add a New Recipe To the Database</h2>
 
-<form action="/recipes/creation" method="POST">
+<form action="/createrecipe" method="POST">
 
     <div>
         <label>Name</label>
         <input type="text" name="theName">
     </div>
-
+    
     <div>
         <label>Date</label>
         <input type="date" name="theDate">
@@ -14,7 +14,7 @@
 
     <div>
         <label>Servings</label>
-        <input type="number" name="theServings">
+        <input type="string" name="theServings">
     </div>
 
     <div>
@@ -24,16 +24,20 @@
 
     <div>
         <label>List of Ingredients</label>
-        <input type="string" name="foodType">
+        <input type="string" name="ingList">
     </div>
 
     <div>
-        <label>List of Ingredients</label>
-        <input type="string" name="foodType">
+        <label>Steps to Cooking</label>
+        <input type="string" name="cookingSteps">
+    </div>
+
+    <div>
+        <label>Recipe Photo</label>
+        <input type="string" name="recImage">
     </div>
     
 
 
-
-        <button>Save</button>
+        <button>Submit Recipe</button>
 </form>

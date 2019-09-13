@@ -1,9 +1,25 @@
-<h2>All Recipes</h2>
+<h2>Welcome to the Recipe Master </h2>
+<h3>This is a list of all our recipes</h3>
+<ul>
+    {{#each allRecipes}}
+    <br>
+        <a href="/recipes/{{this._id}}">{{ this.recipeImage }}</a>
+    <li>
+        <a href="/recipes/{{this._id}}">{{this.name}}</a>
+        <br>
+        {{ this.created }}
+        <br>
+        {{ this.servings }}
+        <br>
+        {{ this.typeOfFood }}
+        <br>
+        {{ this.ingredientsList }}
+        <br>
+        {{ this.stepsToCook }}
+        <br>
+        {{!-- <img src="{{ this.images.0.url }}" alt="" width="160px" >   --}}
+    </li>
 
-<div>
+    {{/each}}
 
-{{#each listOfRecipes}}
-
-<div>
-
-
+</ul>

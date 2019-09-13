@@ -1,0 +1,28 @@
+<h2> Edit: {{ oneRecipe.name }} </h2>
+
+<form action="/recipes/{{oneRecipe._id}}/update" method="post">
+
+  <label for="">Name</label>
+  <input type="text" name="theName" id="" value="{{ oneRecipe.name }}" >
+
+  <label for="">Date</label>
+  <input type="text" name="theDate" id="" value="{{ oneRecipe.created }}" >
+
+  <label for="">Servings</label>
+  <input type="text" name="theServings" id="" value="{{ oneRecipe.servings }}" >
+
+  <label for="">Type of Food</label>
+  <input type="text" name="foodType" id="" value="{{ oneRecipe.typeOfFood }}" >
+
+  <label for="">List of Ingredients</label>
+  <input type="text" name="ingList" id="" value="{{ oneRecipe.ingredientsList }}" >
+
+  <label for="">Steps to Cooking</label>
+  <input type="text" name="cookingSteps" id="" value="{{ oneRecipe.stepsToCook }}" >
+
+  <label for="">Recipe Photo</label>
+  <input type="text" name="recImage" id="" value="{{ oneRecipe.recipeImage }}" >
+
+
+  <button type="submit">Update the Recipe</button>
+</form>

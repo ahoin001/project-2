@@ -1,0 +1,27 @@
+    {{ theRecipe.recipeImage }}
+<br>
+<h3>This is the {{theRecipe.name}} Recipe</h3>
+<br>
+<ul>
+    <li>
+        <p>Created on: {{ theRecipe.created }}</p>
+        <br>
+        <p>Serving Size: {{ theRecipe.servings }}</p>
+        <br>
+        <p>Type of Food: {{ theRecipe.typeOfFood}}</p>
+        <br>
+        <p>List of Ingredients: {{ theRecipe.ingredientsList}}</p>
+        <br>
+        <p>Steps to Cook: {{ theRecipe.stepsToCook}}</p>
+        <br>
+        <a href="/recipes/{{ theRecipe._id }}/edit"> Edit your Recipe </a>
+        <br>
+        <br>
+        <br>
+        <form action="/recipes/{{theRecipe._id}}/delete" method="POST">
+          <button>Delete this Recipe</button>
+       </form>
+        {{!-- <img src="{{ theRecipe.images.0.url }}" alt="" width="160px" >   --}}
+    </li>
+
+</ul>

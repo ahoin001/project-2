@@ -25,7 +25,7 @@ router.get("/user-page/:id/edit", ensureLogin.ensureLoggedIn(), (req, res) => {
 router.post("/user/:id/update",cloudinary.single('image'), ensureLogin.ensureLoggedIn('/'), (req, res) => {
   
   console.log('========================================================================================================================================')
-  console.log('Was redirected too update page')
+  console.log('Was redirected to update page')
   let newProfilePic;
   
   console.log("req.file", req.file)

@@ -58,7 +58,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Recipes: Looking at food a different way';
 
 const index = require('./routes/index');
 app.use('/', index);
@@ -99,7 +99,7 @@ passport.use(new LocalStrategy({
     if (!user) {
       return next(null, false, { message: "Incorrect username" });
     }
-    // if passwprd matches
+    // if password matches
     if (!bcrypt.compareSync(password, user.password)) {
       return next(null, false, { message: "Incorrect password" });
     }
@@ -116,8 +116,9 @@ app.use(passport.session());
 // ****************************************
 
 
-const celebRoutes = require('./routes/');
-app.use('/celebrities',celebRoutes);
+// Routes for Recipes 
+// const celebRoutes = require('./routes/recipe-routes');
+app.use('/',require('./routes/recipe-routes'));
 
 // Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
