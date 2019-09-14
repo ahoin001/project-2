@@ -1,6 +1,7 @@
 {{!-- TODO : What does this do? enctype? Allows more types of data to be submitted, like images --}}
 <form id="form" action="/signup" method="POST" enctype="multipart/form-data">
 
+   
     <br>
     <label for="username">Username:</label>
     <br>
@@ -16,7 +17,7 @@
     <label for="image">Image</label>
     <input type="file" id="image" name="image" accept="image/*">
     <br> <br>
-
+    
     <button type="submit">Create account</button>
     <br>
 
@@ -25,4 +26,3 @@
     <h3>Already have an account? <a href="/login">Sign In Here </a> </h3>
 
 </form>
-
