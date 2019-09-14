@@ -1,0 +1,53 @@
+<div style="float: left">
+
+
+<h1>{{detailReviews.name}}</h1>
+
+<h4>{{detailReviews.recipe}}</h4>
+
+<h4>{{detailReviews.cuisine}}</h4>
+
+<h4>{{detailReviews.review}}</h4>
+
+<h4>{{detailReviews.rating}}</h4>
+
+
+</div>
+<div style="float:right">
+<h2>Edit: {{detailReviews.name}}</h2>
+
+<form action="/reviews-updated/{{detailReviews._id}}" method="POST">
+    <input type="hidden" value="{{detailReviews._id}}" id="secret">
+
+      <div>
+      <label>Name</label>
+      <input type="text" id="" value="{{detailReviews.name}}">
+      </div>
+
+      <div>
+      <label>Recipe</label>
+      <input type="text" id=""  value="{{detailReviews.recipe}}">
+      </div>
+
+      <div>
+      <label>Cuisine</label>
+      <input type="text" id=""  value="{{detailReviews.cuisine}}">
+      </div>
+
+      <div>
+      <label>Review</label>
+      <input type="text" id=""  value="{{detailReviews.review}}">
+      </div>
+
+      <div>
+      <label>Rating</label>
+      <input type="number" id=""  value="{{detailReviews.rating}}">
+      </div>
+      <button type="submit">Update</button>
+</form>
+
+
+
+</div>
+
+{{!-- <script src="/javascripts/celeb-edit.js"></script> --}}
