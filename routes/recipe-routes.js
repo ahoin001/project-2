@@ -1,29 +1,21 @@
-// // routes/authorization-routes.js
-const express = require("express");
-const router = express.Router();
-
+const express = require('express');
+const router  = express.Router();
 const Recipe = require('../models/Recipe');
 const User = require('../models/User');
 const ensureLogin = require("connect-ensure-login");
 const passport = require("passport");
 const cloudinary = require('../config/cloudinaryconfig');
-
 // ===================================================
 //GET ROUTE to display form to create recipe
 router.get('/createrecipe', ensureLogin.ensureLoggedIn(), (req, res, next)=>{
  res.render('recipe-views/recipe-creation.hbs');
  
 })
-
 // ===================================================
-
-
-
 // ===================================================
 //POST ROUTE to create recipe
 router.post('/createrecipe',cloudinary.single('recImage'), (req, res, next)=>{
 //  console.log("printin",req.file);
-
   let newName = req.body.theName;
   let newDate = req.body.theDate;
   let newServings = req.body.theServings;
@@ -31,9 +23,7 @@ router.post('/createrecipe',cloudinary.single('recImage'), (req, res, next)=>{
   let newIngredients = req.body.ingList;
   let newSteps = req.body.cookingSteps;
   let newPhoto = req.file.url;
-
     // Recipe.create(req.body)
-
     Recipe.create ({
       name: newName,
       created: newDate,
@@ -48,60 +38,57 @@ router.post('/createrecipe',cloudinary.single('recImage'), (req, res, next)=>{
       // console.log("this is req.body",req.body);
       // console.log("the newly created Recipe", result);
       req.flash('success','New Recipe successfully addded to Database')
-
       res.redirect('all-recipes');
       //res redirect take a url as the argument
-
-
-//Store Data to the Data-Base
-router.post('/reviews/create',(req, res, next) => {
-  let name      = req.body.name;
-  let recipe    = req.body.recipe;
-  let cuisine   = req.body.cuisine;
-  let review    = req.body.review;
-  let rating    = req.body.rating;   
-
-
-  Reviews.create({
-    name, recipe, cuisine, review, rating
-  })
-  .then((result)=>{
-    console.log('working', result)
-    res.redirect('/all-reviews');
-  })
-  .catch((err)=>{
-    next(err)
-  })
-});
-
-
-//redirecting to hbs & display reviews
-router.get('/all-reviews', (req, res, next) => {
-  Reviews.find()
-  .then(allReviews => {
-    res.render('reviews-views/all-reviews', {allReviews});
+    })
+    .catch((err)=>{
+      next(err)
+    })
+})
+// ===================================================
+// ===================================================
+//GET ROUTE to display all the recipes
+router.get('/all-recipes', (req, res, next) => {
+  Recipe.find()
+  .then(allRecipes => {
+    // res.locals.theMsg = "You are viewing the list of Recipes!";
+    res.render('recipe-views/all-recipes', {allRecipes});
   }).catch(err => next(err));
 });
-
-
-//edit and update a review
-router.get('/reviews-details/:id', (req, res, next) => {
-  Reviews.findById(req.params.id)
-  .then(detailReviews => {
-    res.render('reviews-views/reviews-details', {detailReviews});
-  }).catch(err => next(err));
+// ===================================================
+// ===================================================
+// GET route to display the form to show ONE recipe, clicked by name or by picture
+router.get("/recipes/:recipeId", (req, res, next) => {
+  Recipe
+    .findById(req.params.recipeId)
+    .then(theRecipe => {
+      // console.log("Details page : ", theRecipe)
+      res.render("recipe-views/each-recipe", { theRecipe });
+    })
+    .catch(err => console.log("Error while getting the details of a recipe: ", err));
 });
-
-
-router.post('/reviews-updated/:id', (req, res, next) => {
-  Reviews.findByIdAndUpdate(req.params.id, req.body)
-  .then(updateReviews => {
-    res.render('reviews-views/reviews-updated', {updateReviews})
-  })
- .catch(err => next(err));
+// ===================================================
+// ===================================================
+// POST route to delete the recipe
+// action="/books/{{this._id}}/delete"
+router.post("/recipes/:theId/delete", (req, res, next) => {
+  Recipe
+    .findByIdAndDelete(req.params.theId)
+    .then(() => res.redirect("/all-recipes"))
+    .catch(err => console.log("Error while deleting the book: ", err));
 });
-
-
+// ===================================================
+// ===================================================
+// GET route to display the form to edit a recipe
+router.get("/recipes/:theId/edit", (req, res, next) => {
+  Recipe
+    .findById(req.params.theId)
+    .then( oneRecipe => {
+          res.render("recipe-views/edit-recipes", {oneRecipe});
+    })
+    .catch(err => console.log("Error while getting the book from DB: ", err));
+}); 
+// ===================================================
 // ===================================================
 // POST route to save the updates on editing 
 router.post("/recipes/:id/update", (req, res, next) => {
@@ -125,5 +112,5 @@ router.post("/recipes/:id/update", (req, res, next) => {
     })
     .catch(err => console.log("Error while updating the recipe: ", err));
 });
-     
+// ===================================================
 module.exports = router;
