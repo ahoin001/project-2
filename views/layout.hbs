@@ -35,6 +35,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="/">Budget Bytes</a>
+    
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
       data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
       aria-label="Toggle navigation">
@@ -42,7 +43,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        
+        <li class="nav-item">
+          <a class="nav-link" href="/all-recipes">All Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/createrecipe">Create Recipe</a>
+        </li>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <li class="nav-item">
           <a class="nav-link" href="/signup">Sign Up</a>
         </li>
@@ -59,7 +66,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
             <a class="dropdown-item" href="/user-page">Your Page</a>
             <a class="dropdown-item" href="sidebar.html">Your Recipes</a>
-            <a class="dropdown-item" href="/user-page/:id/edit">Edit Profile</a>
+            <a class="dropdown-item" href="/user-page/:id/edit">Edit Profile</a> {{!users specific recipes route }}
             <a class="dropdown-item" href="/logout">Logout</a>
 
           </div>

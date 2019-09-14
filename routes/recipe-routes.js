@@ -2,23 +2,15 @@ const express = require('express');
 const router  = express.Router();
 
 const Recipe = require('../models/Recipe');
-
-//REQUIRE ENSURE PASSPORT
-//REQUIRE ENSURE LOGIN
-
-// TODO : Add the ensureLogin method to routes that only a logged in user should have access too
-// router.get("/success", ensureLogin.ensureLoggedIn(), (req, res, next) => {
-//   res.render("success");
-//   // console.log(`Logged In!!`);
-// });
-
-
+const User = require('../models/User');
+const ensureLogin = require("connect-ensure-login");
+const passport = require("passport");
 
 // ===================================================
 //GET ROUTE to display form to create recipe
-router.get('/createrecipe', (req, res, next)=>{
-  res.render('recipe-views/recipe-creation.hbs');
-  //res render take a relative path as the argument
+router.get('/createrecipe', ensureLogin.ensureLoggedIn(), (req, res, next)=>{
+ res.render('recipe-views/recipe-creation.hbs');
+ 
 })
 
 // ===================================================
@@ -46,7 +38,7 @@ router.post('/createrecipe', (req, res, next)=>{
       ingredientsList: newIngredients,
       stepsToCook: newSteps,
       recipeImage: newPhoto,
-      // creatorId: req.user._id
+      creatorId: req.user._id
     })
     .then((result)=>{      
       // console.log("this is req.body",req.body);
@@ -80,6 +72,7 @@ router.get('/all-recipes', (req, res, next) => {
 // ===================================================
 // GET route to display the form to show ONE recipe, clicked by name or by picture
 router.get("/recipes/:recipeId", (req, res, next) => {
+
   Recipe
     .findById(req.params.recipeId)
     .then(theRecipe => {
@@ -136,19 +129,6 @@ router.post("/recipes/:id/update", (req, res, next) => {
     .catch(err => console.log("Error while updating the recipe: ", err));
 });
 // ===================================================
-
-
-// router.post('/books/edit', (req, res, next) => {
-//   const { title, author, description, rating } = req.body;
-//   Book.update({_id: req.query.recipe_id}, { $set: {tname, created, servings, typeOfFood, ingredientsList, stepsToCook, recipeImage }})
-//   .then((book) => {
-//     res.redirect('/books');
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   })
-// });
-
 
 
 
