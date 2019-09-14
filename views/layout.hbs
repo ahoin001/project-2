@@ -40,7 +40,9 @@
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
+
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="/all-recipes">All Recipes</a>
@@ -49,6 +51,7 @@
             <a class="nav-link" href="/createrecipe">Create Recipe</a>
           </li>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
           <li class="nav-item">
             <a class="nav-link" href="/signup">Sign Up</a>
           </li>
@@ -56,23 +59,28 @@
             <a class="nav-link" href="/login">Login</a>
           </li>
 
+          {{#if theUser}}
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               {{theUser.username}}
             </a>
+            
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
               <a class="dropdown-item" href="/user-page">Your Page</a>
               <a class="dropdown-item" href="#">Your Recipes</a>
               <a class="dropdown-item" href="/user-page/:id/edit">Edit Profile</a> {{!users specific recipes route }}
-              
-              {{#if theUser}}
+
               <a class="dropdown-item" href="/logout">Logout</a>
-              {{/if}}
+              
 
             </div>
           </li>
+
+          {{/if}}
+
+
         </ul>
       </div>
     </div>
