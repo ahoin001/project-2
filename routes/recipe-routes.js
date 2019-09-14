@@ -2,15 +2,6 @@
 const express = require("express");
 const router = express.Router();
 
-<<<<<<< HEAD
-// Review model
-const Reviews = require("../models/Review");
-
-//Get Homepage
-router.get('/reviews', (req, res, next) => {
-  res.render('reviews-views/reviews');
-});
-=======
 const Recipe = require('../models/Recipe');
 const User = require('../models/User');
 const ensureLogin = require("connect-ensure-login");
@@ -60,7 +51,6 @@ router.post('/createrecipe',cloudinary.single('recImage'), (req, res, next)=>{
 
       res.redirect('all-recipes');
       //res redirect take a url as the argument
->>>>>>> 39363d5c998694894d2239edb281f1009ca47478
 
 
 //Store Data to the Data-Base
@@ -111,14 +101,6 @@ router.post('/reviews-updated/:id', (req, res, next) => {
  .catch(err => next(err));
 });
 
-<<<<<<< HEAD
-//Delete a review
-router.post("/reviews-details/:theId/delete", (req, res, next) => {
-  Reviews
-    .findByIdAndDelete(req.params.theId)
-    .then(() => res.redirect("/all-reviews"))
-    .catch(err => console.log("Error while deleting the review: ", err));
-=======
 
 // ===================================================
 // POST route to save the updates on editing 
@@ -138,7 +120,6 @@ router.post("/recipes/:id/update", (req, res, next) => {
       res.redirect(`/recipes/${updatedRecipe._id}`)
     })
     .catch(err => console.log("Error while updating the recipe: ", err));
->>>>>>> 39363d5c998694894d2239edb281f1009ca47478
 });
      
-module.exports = router
+module.exports = router;
