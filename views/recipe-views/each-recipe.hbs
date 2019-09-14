@@ -1,9 +1,11 @@
-    {{ theRecipe.recipeImage }}
-<br>
-<h3>This is the {{theRecipe.name}} Recipe</h3>
-<br>
-<ul>
-    <li>
+<div class="row">
+      <div class="col-md-7">
+        <a href="#">
+          <img class="img-fluid rounded mb-3 mb-md-0" src="{{theRecipe.recipeImage}}" alt="">
+        </a>
+      </div>
+      <div class="col-md-5">
+        <h3> {{theRecipe.name}} </h3>
         <p>Created by: {{ theRecipe.creatorId }}</p>
         <br>
         <p>Created on: {{ theRecipe.created }}</p>
@@ -16,6 +18,16 @@
         <br>
         <p>Steps to Cook: {{ theRecipe.stepsToCook}}</p>
         <br>
+        <a class="btn btn-primary" href="/recipes/{{ theRecipe._id }}/edit"> Edit your Recipe
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        <form action="/recipes/{{theRecipe._id}}/delete" method="POST" class="btn btn-primary"> 
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <button>Delete this Recipe</button>
+        </form>
+      </div>
+    </div>   
+   
         <a href="/recipes/{{ theRecipe._id }}/edit"> Edit your Recipe </a>
         <br>
         <br>
@@ -24,7 +36,7 @@
         <br>
         <br>
         <form action="/recipes/{{theRecipe._id}}/delete" method="POST">
-          <button>Delete this Recipe</button>
+          
        </form>
         {{!-- <img src="{{ theRecipe.images.0.url }}" alt="" width="160px" >   --}}
     </li>

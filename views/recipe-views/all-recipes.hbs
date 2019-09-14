@@ -1,25 +1,28 @@
-<h2>Welcome to the Recipe Master </h2>
-<h3>This is a list of all our recipes</h3>
-<ul>
+   <div class="container">
+   
+    <h1 class="mt-4 mb-3">Welcome to the Recipe Master
+      <small>List Of All Our Recipes</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active">All Recipes</li>
+    </ol>
+    
     {{#each allRecipes}}
-    <br>
-        <a href="/recipes/{{this._id}}">{{ this.recipeImage }}</a>
-    <li>
-        <a href="/recipes/{{this._id}}">{{this.name}}</a>
-        <br>
-        {{ this.created }}
-        <br>
-        {{ this.servings }}
-        <br>
-        {{ this.typeOfFood }}
-        <br>
-        {{ this.ingredientsList }}
-        <br>
-        {{ this.stepsToCook }}
-        <br>
-        {{!-- <img src="{{ this.images.0.url }}" alt="" width="160px" >   --}}
-    </li>
-
-    {{/each}}
-
-</ul>
+    <div class="row">
+      <div class="col-lg-6 portfolio-item">
+        <div class="card h-100">
+          <a href="/recipes/{{this._id}}"><img class="card-img-top" src="{{ this.recipeImage }}" width="700px" height="400px" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="/recipes/{{this._id}}">{{this.name}}</a>
+            </h4>
+            <p class="card-text">{{ this.ingredientsList }}</p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      </div>

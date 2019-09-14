@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = Schema({
     name: {type: String, required: true},
-    created: {type: Date, default: Date.now},
+    created: {type: Date, required: true},
     servings: {type: String, required: true},
     typeOfFood: {type: String, enum: ["Italian", "Chinese", "American"]}, //just an example of the options, we can decide later
     ingredientsList: [],

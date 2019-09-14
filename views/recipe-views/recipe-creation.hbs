@@ -1,6 +1,6 @@
 <h2>Add a New Recipe To the Database</h2>
 
-<form action="/createrecipe" method="POST">
+<form action="/createrecipe" method="POST" enctype="multipart/form-data">
 
     <div>
         <label>Name</label>
@@ -34,7 +34,7 @@
 
     <div>
         <label>Recipe Photo</label>
-        <input type="string" name="recImage">
+        <input type="file" name="recImage" accept="image/*">
     </div>
     
 
