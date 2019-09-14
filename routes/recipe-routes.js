@@ -8,7 +8,7 @@ const cloudinary = require('../config/cloudinaryconfig');
 // ===================================================
 //GET ROUTE to display form to create recipe
 router.get('/createrecipe', ensureLogin.ensureLoggedIn(), (req, res, next)=>{
- res.render('recipe-views/recipe-creation.hbs');
+ res.render('recipe-views/recipe-creation.hbs', { theUser: req.user });
  
 })
 // ===================================================
@@ -52,7 +52,10 @@ router.get('/all-recipes', (req, res, next) => {
   Recipe.find()
   .then(allRecipes => {
     // res.locals.theMsg = "You are viewing the list of Recipes!";
-    res.render('recipe-views/all-recipes', {allRecipes});
+    res.render('recipe-views/all-recipes', {
+      allRecipes,
+      theUser: req.user
+    });
   }).catch(err => next(err));
 });
 // ===================================================
@@ -63,7 +66,10 @@ router.get("/recipes/:recipeId", (req, res, next) => {
     .findById(req.params.recipeId)
     .then(theRecipe => {
       // console.log("Details page : ", theRecipe)
-      res.render("recipe-views/each-recipe", { theRecipe });
+      res.render("recipe-views/each-recipe", { 
+        theRecipe,
+        theUser: req.user
+      });
     })
     .catch(err => console.log("Error while getting the details of a recipe: ", err));
 });
@@ -84,7 +90,12 @@ router.get("/recipes/:theId/edit", (req, res, next) => {
   Recipe
     .findById(req.params.theId)
     .then( oneRecipe => {
-          res.render("recipe-views/edit-recipes", {oneRecipe});
+          res.render("recipe-views/edit-recipes", {
+            
+            oneRecipe,
+            theUser: req.user
+
+          });
     })
     .catch(err => console.log("Error while getting the book from DB: ", err));
 }); 
