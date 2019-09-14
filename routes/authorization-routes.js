@@ -105,6 +105,7 @@ router.get("/logout", (req, res) => {
 });
 
 // TODO : Add the ensureLogin method to routes that only a logged in user should have access too
+// 
 router.get("/success", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render("success");
   // console.log(`Logged In!!`);

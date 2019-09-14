@@ -93,7 +93,7 @@ router.get("/recipes/:recipeId", (req, res, next) => {
 
 
 // ===================================================
-// POST route to delete the book
+// POST route to delete the recipe
 // action="/books/{{this._id}}/delete"
 router.post("/recipes/:theId/delete", (req, res, next) => {
   Recipe
