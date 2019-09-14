@@ -25,7 +25,8 @@ const Review = require("./models/Review");
 
 // TODO: Can name 'Project-2' anything we want the database name to be
 mongoose
-  .connect('mongodb://localhost/Project-2', { useNewUrlParser: true })
+  // .connect('mongodb://localhost/Project-2', { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -118,7 +119,7 @@ app.use(passport.session());
 
 // Routes for Recipes 
 // const celebRoutes = require('./routes/recipe-routes');
-app.use('/',require('./routes/recipe-routes'));
+app.use('/', require('./routes/recipe-routes'));
 
 // Routes for Authorization 
 app.use('/', require('./routes/authorization-routes'));
