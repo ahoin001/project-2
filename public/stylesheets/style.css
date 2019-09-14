@@ -8,4 +8,30 @@ a {
   width: 300px;
   height: 300px; }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+#reviews {
+display: flex;
+justify-content: center;
+
+}  
+
+#mainreview{
+  background:#FFFFFF;
+  width:80%;
+  height: 800px;
+	margin: 0 auto;
+	padding: 10px;
+	margin-top:50px;
+	box-shadow:0px 2px 7px 1px #aa9191;
+}
+
+#reviews input{
+display: inline;
+
+}
+=======
+>>>>>>> 3fc9dda0da1c4270b25322c551344ba948c652b1
+>>>>>>> 6315f2ec50544bb946d3151da6e5dc563e9b405f
 /*# sourceMappingURL=style.css.map */

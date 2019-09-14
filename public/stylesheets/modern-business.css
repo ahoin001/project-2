@@ -20,3 +20,15 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
+.flex-container {
+
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+}
+
+.flex-container div{
+  
+}

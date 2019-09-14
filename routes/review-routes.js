@@ -51,13 +51,19 @@ router.get('/reviews-details/:id', (req, res, next) => {
 });
 
 
-router.post('/reviews-updated/:id', (req, res, next) => {
-  Reviews.findByIdAndUpdate(req.params.id, req.body)
-  .then(updateReviews => {
-    res.render('reviews-views/reviews-updated', {updateReviews})
-  })
- .catch(err => next(err));
+router.post("/reviews-updated/:theId", (req, res, next) => {
+  Reviews.
+  findByIdAndUpdate(req.params.theId, req.body)
+  .then(detailReviews => {res.render('reviews-views/reviews-updated', {detailReviews});
+}).catch(err => console.log("Error while updating the review:", err));
 });
 
+//Delete a review
+router.post("/reviews-details/:theId/delete", (req, res, next) => {
+  Reviews
+    .findByIdAndDelete(req.params.theId)
+    .then(() => res.redirect("/all-reviews"))
+    .catch(err => console.log("Error while deleting the review: ", err));
+});
      
 module.exports = router
