@@ -5,6 +5,7 @@ const Recipe = require('../models/Recipe');
 const User = require('../models/User');
 const ensureLogin = require("connect-ensure-login");
 const passport = require("passport");
+const cloudinary = require('../config/cloudinaryconfig');
 
 // ===================================================
 //GET ROUTE to display form to create recipe
@@ -19,20 +20,22 @@ router.get('/createrecipe', ensureLogin.ensureLoggedIn(), (req, res, next)=>{
 
 // ===================================================
 //POST ROUTE to create recipe
-router.post('/createrecipe', (req, res, next)=>{
+router.post('/createrecipe',cloudinary.single('recImage'), (req, res, next)=>{
+//  console.log("printin",req.file);
+
   let newName = req.body.theName;
   let newDate = req.body.theDate;
   let newServings = req.body.theServings;
   let newType = req.body.foodType;
   let newIngredients = req.body.ingList;
   let newSteps = req.body.cookingSteps;
-  let newPhoto = req.body.recImage;
+  let newPhoto = req.file.url;
 
     // Recipe.create(req.body)
 
     Recipe.create ({
       name: newName,
-      occupation: newDate,
+      created: newDate,
       servings: newServings,
       typeOfFood: newType,
       ingredientsList: newIngredients,
@@ -121,11 +124,11 @@ router.post("/recipes/:id/update", (req, res, next) => {
     // find by id and pass the new req.body to replace previous document in the DB
     //  .updateOne({_id: req.query._id}, { $set: {name, created, servings, typeOfFood, ingredientsList, stepsToCook, recipeImage }})
     .findByIdAndUpdate(req.params.id, req.body)
-    // .then(console.log("the data is is: ", req.params.id, "everything else is: ", req.body))
-    .then(updatedRecipe => res.redirect(`/recipes/${updatedRecipe._id}`))
-    // .then(()=>{
-    //   res.redirect('/all-recipes');
-    // })
+    // (console.log("the data is is: ", req.params.id, "everything else is: ", req.body))
+    .then((updatedRecipe)=>{
+      console.log("upd", updatedRecipe)
+      res.redirect(`/recipes/${updatedRecipe._id}`)
+    })
     .catch(err => console.log("Error while updating the recipe: ", err));
 });
 // ===================================================
