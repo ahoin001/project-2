@@ -17,6 +17,7 @@ const cloudinary = require('../config/cloudinaryconfig');
 // User model
 const User = require("../models/User");
 
+
 // ********************************************************************************
 
 router.get("/signup", (req, res, next) => {

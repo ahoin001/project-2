@@ -16,5 +16,12 @@
   <br>
 
   <button type="submit">Update account</button>
+</form>
+  <br><br>
+
+  {{!-- Post To Send User Info To Deletion Route So We Can Access The Users ID --}}
+  <form action="/user/{{theUser.id}}/deleteUser" method="POST">
+    <button>Delete Account</button>
+
 
 </form>
