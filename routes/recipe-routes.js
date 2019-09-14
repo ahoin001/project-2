@@ -112,7 +112,11 @@ router.post("/recipes/:id/update", (req, res, next) => {
     .findByIdAndUpdate(req.params.id, {
       name: req.body.theName,
       created: req.body.theDate,
-      servings: req.body.the
+      servings: req.body.theServings,
+      typeOfFood: req.body.foodType,
+      ingredientsList: req.body.ingList,
+      stepsToCook: req.body.cookingSteps,
+      recipeImage: req.body.recImage
     })
     // (console.log("the data is is: ", req.params.id, "everything else is: ", req.body))
     .then((updatedRecipe)=>{
