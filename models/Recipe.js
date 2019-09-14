@@ -9,7 +9,7 @@ const recipeSchema = Schema({
     ingredientsList: [],
     stepsToCook: {type: String, required: true},
     recipeImage: {type: String, required: true},
-    creatorId: [{type: Schema.Types.ObjectId, ref: 'User'}]
+    creatorId: {type: Schema.Types.ObjectId, ref: 'User'}
 })
 
 
