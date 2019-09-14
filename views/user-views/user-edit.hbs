@@ -4,24 +4,24 @@
 
   <label for="">User Name :</label>
   <input type="text" name="username" id="" value="{{ theUser.username }}">
-  <br><br> 
-  
+  <br><br>
+
   {{!-- <label for="">Password maybe? </label>
   <input type="text" name="passwprd" id="" placeholder="New Password" > --}}
-  
+
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  
-  <label for="image">Image :</label> 
+
+  <label for="image">Image :</label>
   <input type="file" id="image" name="image" accept="image/*">
   <br>
 
   <button type="submit">Update account</button>
 </form>
-  <br><br>
+<br><br>
 
-  {{!-- Post To Send User Info To Deletion Route So We Can Access The Users ID --}}
-  <form action="/user/{{theUser.id}}/deleteUser" method="POST">
-    <button>Delete Account</button>
+{{!-- Post To Send User Info To Deletion Route So We Can Access The Users ID --}}
+<form action="/user/{{theUser.id}}/deleteUser" method="POST">
 
+  <button>Delete Account</button>
 
 </form>
