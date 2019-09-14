@@ -12,6 +12,6 @@ const userSchema = Schema({
 })
 
 const User = mongoose.model('User', userSchema);
-
+mongoose.set('useFindAndModify', false);
 // Export for use in other Files
 module.exports = User;
