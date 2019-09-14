@@ -1,9 +1,16 @@
-<h2>Reviews</h2>
+<div id="reviewreview">
+<h2>Reviews:</h2>
 
-<div>
+<div id="descrip">
   {{#each allReviews}}
     <div>
+      <ul>
       <a href="/reviews-details/{{this._id}}">{{this.name}}</a>
+      </ul>
     </div>  
   {{/each}}
+<ul><a href="/reviews">Create New Review</a></ul>
+</div>
+
+
 </div>

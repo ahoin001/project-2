@@ -1,6 +1,7 @@
-<div style="float: left">
+<div id="themaincontentreview">
+<div id="maincontentreview">
 
-
+<div>
 <h1>{{detailReviews.name}}</h1>
 
 <h4>{{detailReviews.recipe}}</h4>
@@ -14,10 +15,11 @@
 <form action="/reviews-details/{{detailReviews._id}}/delete" method="POST">
 <button type="submit">Delete</button>
 </form>
-
-
 </div>
-<div style="float:right">
+
+
+
+<div>
 <h2>Edit: {{detailReviews.name}}</h2>
 <form action="/reviews-updated/{{detailReviews._id}}" method="POST">
       <div>
@@ -46,8 +48,9 @@
       </div>
       <button type="submit">Update</button>
 </form>
+</div>
 
 
 
 </div>
-
+</div>
