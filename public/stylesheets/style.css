@@ -8,16 +8,4 @@ a {
   width: 300px;
   height: 300px; }
 
-.flex-container {
-
-  width: 80%;
-  display: flex;
-  justify-content: space-evenly;
-
-}
-
-.flex-container div {
-  padding-left: 1em;
-}
-
 /*# sourceMappingURL=style.css.map */

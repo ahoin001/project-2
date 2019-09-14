@@ -20,3 +20,14 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
+.flex-container {
+
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.flex-container div{
+  padding-left: .6em;
+}
