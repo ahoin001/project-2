@@ -123,7 +123,11 @@ router.post("/recipes/:id/update", (req, res, next) => {
   Recipe
     // find by id and pass the new req.body to replace previous document in the DB
     //  .updateOne({_id: req.query._id}, { $set: {name, created, servings, typeOfFood, ingredientsList, stepsToCook, recipeImage }})
-    .findByIdAndUpdate(req.params.id, req.body)
+    .findByIdAndUpdate(req.params.id, {
+      name: req.body.theName,
+      created: req.body.theDate,
+      servings: req.body.the
+    })
     // (console.log("the data is is: ", req.params.id, "everything else is: ", req.body))
     .then((updatedRecipe)=>{
       console.log("upd", updatedRecipe)
