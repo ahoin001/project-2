@@ -25,9 +25,10 @@ body {
 
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 
 }
 
 .flex-container div{
-  padding-left: .6em;
+  
 }
