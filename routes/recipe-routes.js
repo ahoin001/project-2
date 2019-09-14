@@ -17,7 +17,6 @@ router.get('/createrecipe', ensureLogin.ensureLoggedIn(), (req, res, next)=>{
 // ===================================================
 
 
-
 // ===================================================
 //POST ROUTE to create recipe
 router.post('/createrecipe',cloudinary.single('recImage'), (req, res, next)=>{
@@ -119,10 +118,8 @@ router.get("/recipes/:theId/edit", (req, res, next) => {
 // ===================================================
 // POST route to save the updates on editing 
 router.post("/recipes/:id/update", (req, res, next) => {
-  // const { name, created, servings, typeOfFood, ingredientsList, stepsToCook, recipeImage } = req.body;
   Recipe
     // find by id and pass the new req.body to replace previous document in the DB
-    //  .updateOne({_id: req.query._id}, { $set: {name, created, servings, typeOfFood, ingredientsList, stepsToCook, recipeImage }})
     .findByIdAndUpdate(req.params.id, {
       name: req.body.theName,
       created: req.body.theDate,
@@ -134,7 +131,7 @@ router.post("/recipes/:id/update", (req, res, next) => {
     })
     // (console.log("the data is is: ", req.params.id, "everything else is: ", req.body))
     .then((updatedRecipe)=>{
-      console.log("upd", updatedRecipe)
+      // console.log("upd", updatedRecipe)
       res.redirect(`/recipes/${updatedRecipe._id}`)
     })
     .catch(err => console.log("Error while updating the recipe: ", err));

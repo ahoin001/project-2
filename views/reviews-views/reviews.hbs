@@ -1,11 +1,9 @@
 <div id= "mainreview">
   <h1>Leave Your Review</h1>
 
-  <form id="reviews" action="/reviews/create" method="POST">
+  <form id="reviews" action="/recipes/:id/review" method="POST">
     <label>Name</label>
-    <input type="text" name="name" {{this.name}}>
-    <label>Recipe</label>
-    <input type="text" name="recipe" {{this.recipe}}>
+    <input type="text" name="name" >
     <label>Cuisine</label>
     <input type="text" name="cuisine" {{this.cuisine}}>
     <label>Review</label>
@@ -13,6 +11,8 @@
     <label>Rating</label>
     <input type="number" name="rating" {{this.rating}}>
     <button type="submit">Send</button>
+
+    <input type="hidden" value={{theid}} name="recipeId">
   </form>
 
 </div>

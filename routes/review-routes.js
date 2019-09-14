@@ -4,20 +4,27 @@ const router = express.Router();
 
 // Review model
 const Reviews = require("../models/Review");
+// const Recipes = require ("../models/Recipe");
+
+// const recId = Recipe._id;
 
 //Get Homepage
-router.get('/reviews', (req, res, next) => {
-  res.render('reviews-views/reviews');
+router.get('/recipes/:id/review', (req, res, next) => {
+  res.render('reviews-views/reviews', {theid: req.params.id});
 });
+
+// router.get("/recipes/{{ Recipes._id }}/review", (req, res, next) => {
+//   res.render('reviews-views/reviews');
+// });
 
 
 //Store Data to the Data-Base
-router.post('/reviews/create',(req, res, next) => {
+router.post('/recipes/:id/review',(req, res, next) => {
   let name      = req.body.name;
-  let recipe    = req.body.recipe;
   let cuisine   = req.body.cuisine;
   let review    = req.body.review;
   let rating    = req.body.rating;   
+  let recipe    = req.body.recipeId;
 
 
   Reviews.create({
@@ -25,7 +32,7 @@ router.post('/reviews/create',(req, res, next) => {
   })
   .then((result)=>{
     console.log('working', result)
-    res.redirect('/all-reviews');
+    res.redirect(`/recipes/${recipe}`);
   })
   .catch((err)=>{
     next(err)
@@ -57,7 +64,7 @@ router.post('/reviews-updated/:id', (req, res, next) => {
     res.render('reviews-views/reviews-updated', {updateReviews})
   })
  .catch(err => next(err));
-});
+ });
 
 //Delete a review
 router.post("/reviews-details/:theId/delete", (req, res, next) => {

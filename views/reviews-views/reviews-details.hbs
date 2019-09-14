@@ -1,56 +1,40 @@
 <div id="themaincontentreview">
 <div id="maincontentreview">
-
 <div>
 <h1>{{detailReviews.name}}</h1>
-
 <h4>{{detailReviews.recipe}}</h4>
-
 <h4>{{detailReviews.cuisine}}</h4>
-
 <h4>{{detailReviews.review}}</h4>
-
 <h4>{{detailReviews.rating}}</h4>
-
 <form action="/reviews-details/{{detailReviews._id}}/delete" method="POST">
 <button type="submit">Delete</button>
 </form>
 </div>
-
-
-
 <div>
 <h2>Edit: {{detailReviews.name}}</h2>
 <form action="/reviews-updated/{{detailReviews._id}}" method="POST">
-      <div>
-      <label>Name</label>
-      <input type="text" id="" value="{{detailReviews.name}}">
-      </div>
-
-      <div>
-      <label>Recipe</label>
-      <input type="text" id=""  value="{{detailReviews.recipe}}">
-      </div>
-
-      <div>
-      <label>Cuisine</label>
-      <input type="text" id=""  value="{{detailReviews.cuisine}}">
-      </div>
-
-      <div>
-      <label>Review</label>
-      <input type="text" id=""  value="{{detailReviews.review}}">
-      </div>
-
-      <div>
-      <label>Rating</label>
-      <input type="number" id=""  value="{{detailReviews.rating}}">
-      </div>
-      <button type="submit">Update</button>
+     <div>
+     <label>Name</label>
+     <input type="text" name="name" value="{{detailReviews.name}}">
+     </div>
+     <div>
+     <label>Recipe</label>
+     <input type="text" name="recipe"  value="{{detailReviews.recipe}}">
+     </div>
+     <div>
+     <label>Cuisine</label>
+     <input type="text" name="cuisine"  value="{{detailReviews.cuisine}}">
+     </div>
+     <div>
+     <label>Review</label>
+     <input type="text" name="review"  value="{{detailReviews.review}}">
+     </div>
+     <div>
+     <label>Rating</label>
+     <input type="number" rating="rating"  value="{{detailReviews.rating}}">
+     </div>
+     <button type="submit">Update</button>
 </form>
 </div>
-
-
-
 </div>
 </div>
