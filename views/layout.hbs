@@ -26,7 +26,7 @@
 
   <!-- Custom styles for this template -->
   <link href="/stylesheets/modern-business.css" rel="stylesheet">
-
+  <link href="/stylesheets/review-style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -42,7 +42,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        
+        <li class="nav-item">
+          <a class="nav-link" href="/all-recipes">All Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/createrecipe">Create Recipe</a>
+        </li>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <li class="nav-item">
           <a class="nav-link" href="/signup">Sign Up</a>
         </li>
@@ -59,7 +65,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
             <a class="dropdown-item" href="/user-page">Your Page</a>
             <a class="dropdown-item" href="sidebar.html">Your Recipes</a>
-            <a class="dropdown-item" href="/user-page/:id/edit">Edit Profile</a>
+            <a class="dropdown-item" href="/user-page/:id/edit">Edit Profile</a> {{!users specific recipes route }}
             <a class="dropdown-item" href="/logout">Logout</a>
 
           </div>

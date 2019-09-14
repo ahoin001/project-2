@@ -34,7 +34,7 @@ router.post('/reviews/create',(req, res, next) => {
 
 
 //redirecting to hbs & display reviews
-router.get('/all-reviews', (req, res, next) => {
+router.get('/all-reviews/:id', (req, res, next) => {
   Reviews.find()
   .then(allReviews => {
     res.render('reviews-views/all-reviews', {allReviews});
