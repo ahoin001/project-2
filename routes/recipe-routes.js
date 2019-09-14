@@ -12,11 +12,6 @@ router.get('/createrecipe', ensureLogin.ensureLoggedIn(), (req, res, next)=>{
  
 })
 // ===================================================
-<<<<<<< HEAD
-
-
-=======
->>>>>>> db3d7e9a499af0fdecbe4c9159b5033010634b8c
 // ===================================================
 //POST ROUTE to create recipe
 router.post('/createrecipe',cloudinary.single('recImage'), (req, res, next)=>{
