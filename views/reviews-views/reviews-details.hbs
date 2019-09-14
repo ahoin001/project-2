@@ -11,14 +11,15 @@
 
 <h4>{{detailReviews.rating}}</h4>
 
+<form action="/reviews-details/{{detailReviews._id}}/delete" method="POST">
+<button type="submit">Delete</button>
+</form>
+
 
 </div>
 <div style="float:right">
 <h2>Edit: {{detailReviews.name}}</h2>
-
 <form action="/reviews-updated/{{detailReviews._id}}" method="POST">
-    <input type="hidden" value="{{detailReviews._id}}" id="secret">
-
       <div>
       <label>Name</label>
       <input type="text" id="" value="{{detailReviews.name}}">
@@ -50,4 +51,3 @@
 
 </div>
 
-{{!-- <script src="/javascripts/celeb-edit.js"></script> --}}
