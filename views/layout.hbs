@@ -27,12 +27,12 @@
   <!-- Custom styles for this template -->
   <link href="/stylesheets/modern-business.css" rel="stylesheet">
   <link href="/stylesheets/review-style.css" rel="stylesheet">
-
 </head>
 
 <body>
 
   <!-- Navigation -->
+<<<<<<< HEAD
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="/">CHEF It</a>
@@ -72,11 +72,95 @@
           </div>
         </li>
       </ul>
-    </div>
-  </div>
-</nav>
+=======
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 
-<br> <br>
+    <div class="container">
+
+      <a class="navbar-brand" href="/">Budget Bites</a>
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/all-recipes">All Recipes</a>
+          </li>
+
+          {{!-- if user signed in then they have this tab available --}}
+          {{#if currentUser}}
+          <li class="nav-item">
+            <a class="nav-link" href="/createrecipe">Create Recipe</a>
+          </li>
+          {{/if}}
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          {{#if currentUser}}
+
+          {{!-- Hide Login Button since user is signed in already --}}
+          <li class="nav-item" style="display:none;">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+
+          {{!-- Hide Signup button since user is already signed in --}}
+          <li class="nav-item" style="display:none;">
+            <a class="nav-link" href="/signup">Sign Up</a>
+          </li>
+
+          {{!-- IF user signed in give them drop down user menu --}}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+
+              {{!-- The name that will be displayed on drop down menu --}}
+              {{theUser.username}}
+
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+
+              <a class="dropdown-item" href="/user-page">Your Page</a>
+              <a class="dropdown-item" href="#">Your Recipes</a>
+              <a class="dropdown-item" href="/user-page/:id/edit">Edit Profile</a> {{!users specific recipes route }}
+
+              <a class="dropdown-item" href="/logout">Logout</a>
+
+
+            </div>
+          </li>
+
+
+          {{else}}
+
+          {{!-- Hide Signup button since user is already signed in --}}
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Sign Up</a>
+          </li>
+
+          {{!-- If no User Is Signed In, Show Sign Up and Login --}}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+
+          {{/if}}
+
+        </ul>
+
+      </div>
+
+>>>>>>> db3d7e9a499af0fdecbe4c9159b5033010634b8c
+    </div>
+
+  </nav>
+
+  <br> <br>
   {{{body}}}
 
   <script src="/javascripts/script.js"></script>
