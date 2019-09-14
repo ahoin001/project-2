@@ -33,12 +33,16 @@
 
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+
     <div class="container">
+
       <a class="navbar-brand" href="/">Budget Bites</a>
+
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
+
       </button>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -49,7 +53,7 @@
           </li>
 
           {{!-- if user signed in then they have this tab available --}}
-          {{#if theUser}}
+          {{#if currentUser}}
           <li class="nav-item">
             <a class="nav-link" href="/createrecipe">Create Recipe</a>
           </li>
@@ -57,7 +61,7 @@
 
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-          {{#if theUser}}
+          {{#if currentUser}}
 
           {{!-- Hide Login Button since user is signed in already --}}
           <li class="nav-item" style="display:none;">
@@ -80,7 +84,7 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-              
+
               <a class="dropdown-item" href="/user-page">Your Page</a>
               <a class="dropdown-item" href="#">Your Recipes</a>
               <a class="dropdown-item" href="/user-page/:id/edit">Edit Profile</a> {{!users specific recipes route }}
@@ -107,7 +111,7 @@
           {{/if}}
 
         </ul>
-        
+
       </div>
 
     </div>
