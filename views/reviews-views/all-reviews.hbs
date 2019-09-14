@@ -1,0 +1,9 @@
+<h2>Reviews</h2>
+
+<div>
+  {{#each allReviews}}
+    <div>
+      <a href="/reviews-details/{{this._id}}">{{this.name}}</a>
+    </div>  
+  {{/each}}
+</div>
